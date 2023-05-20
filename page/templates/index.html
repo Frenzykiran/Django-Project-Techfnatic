@@ -1,0 +1,443 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ companyName }}</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+  <style>
+    /* Add some basic styling */
+    body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-image: url("{% if backimage.Back_img %}{{ backimage.Back_img.url }}{% else %}{% static 'default-background.jpg' %}{% endif %}");
+  background-size: cover;
+}
+
+/* Style for the fixed navigation bar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #d3d1d1;
+  color: #333;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #000;
+}
+
+/* Style for the company name */
+.company-name {
+  font-family: 'Bebas Neue', cursive;
+  color: rgb(157, 3, 3);
+  font-size: 28px;
+  font-weight: bold;
+  margin-right: auto;
+  margin-left: 80px;
+  cursor: pointer;
+  font-weight: 1700;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Style for the navigation links */
+.nav-links {
+  margin-right: 250px;
+}
+
+.nav-links a {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+/* Style for the page content */
+.page-content {
+  margin-top: 40px;
+  padding: 100px;
+  margin-left: 40px;
+}
+
+/* Style for the paragraph */
+.intro-paragraph {
+  font-size: 44px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  line-height: 1;
+}
+
+/* Style for the line */
+.line {
+  width: 20%;
+  height: 2px;
+  background-color: #000;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+/* Style for the image */
+.image-container {
+  margin-right: auto;
+  margin-left: 630px;
+  margin-top: -550px;
+  margin-bottom: 100px;
+}
+
+.image-container img {
+  width: 700px;
+  height: 500px;
+}
+
+.red-line1 {
+  height: 2px;
+  background-color: rgb(157, 3, 3);
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  
+}
+
+/* Style for the products button */
+.products-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: rgb(133, 3, 3);
+  border-radius: 30px;
+  color: white;
+  text-decoration: none;
+  margin-bottom: 150px;
+}
+
+/* Style for the heading "Our Products" */
+.our-products-heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+/* Style for the product boxes */
+.product-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 70px;
+}
+
+.product-box {
+  width: 30%;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.product-box img {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 10px;
+}
+
+.product-box h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.product-box p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.product-box .know-more-button {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 30px;
+}
+
+.image-below-boxes {
+  text-align: center;
+  margin-top: 180px;
+}
+
+.image-below-boxes img {
+  width: 500px;
+  height: 300px;
+}
+
+.red-line2 {
+  height: 2px;
+  background-color:rgb(157, 3, 3);
+  position: absolute;
+  bottom: -600px;
+  left: 0;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.about-us {
+  margin-top: -290px;
+  margin-left: 560px;
+  margin-bottom: 180px;
+  font-weight: 500;
+}
+
+.red-line3 {
+  height: 2px;
+  background-color: rgb(157, 3, 3);
+  position: absolute;
+  bottom: -1200px;
+  left: 0;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.company-name2 {
+  font-family: 'Bebas Neue', cursive;
+  color: rgb(157, 3, 3);
+  font-size: 28px;
+  font-weight: bold;
+  font-family: 'Papyrus';
+  margin-right: 140px;
+  margin-left: 140px;
+  margin-top: 10px;
+  margin-bottom: 80px;
+  font-weight: 1700;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.footer-links a {
+  color: #0a0a0a;
+  text-decoration: none;
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-left: 150px;
+}
+
+.email-contact {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin-top: -250px;
+  margin-left: 450px;
+  margin-bottom: auto;
+}
+
+.email-contact img {
+  width: 46px;
+  height: 46px;
+  margin-top: auto;
+  margin-right: 5px;
+  margin-left: 150px;
+  margin-bottom: auto;
+  line-height: 1;
+}
+
+.address-contact {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin-top: auto;
+  margin-left: 450px;
+}
+
+.address-contact img {
+  width: 46px;
+  height: 46px;
+  margin-top: auto;
+  margin-right: 5px;
+  margin-left: 150px;
+  margin-bottom: auto;
+  line-height: 1;
+}
+
+.facebook {
+  float: right;
+  margin-right: 230px;
+  margin-top: -150px;
+  height: 10px;
+  width: 10px;
+}
+
+.linkedin {
+  float: right;
+  margin-right: 180px;
+  margin-top: -150px;
+  height: 10px;
+  width: 10px;
+}
+
+.facebook img,
+.linkedin img {
+  max-height: 30px;
+  max-width: 30px;
+  margin-bottom: 300px;
+}
+
+/*
+#map-container {
+    width: 500px;
+    height: 400px;
+}
+*/
+
+.red-line {
+  height: 2px;
+  background-color: rgb(157, 3, 3);
+  position: absolute;
+  bottom: -1650px;
+  left: 0;
+  width: 100%;
+  margin-top: 1550px;
+  margin-bottom: 150px;
+}
+
+.copyrights {
+  position: absolute;
+  bottom: 1900;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 135px;
+}
+
+
+
+
+  </style>
+</head>
+<body>
+  
+  <div class="navbar">
+    <div class="company-name" onclick="location.href='/';">{{ companyName }}</div>
+    <div class="nav-links">
+      <a href="/" onclick="location.href='/';">Home</a>
+      <a href="#our-products">Product</a>
+      <a href="#email-section">Contact Us</a>
+    </div>
+  </div>
+
+  <!-- Add your page content here -->
+  <div class="page-content">
+    <p class="intro-paragraph">Bring Your Ideas</p>
+    <p class="intro-paragraph">to life with</p>
+    <p class="intro-paragraph">TechFnatic</p>
+    <div class="line"></div>
+    <p>The one stop store for all your Technical Requirements. Help us</p>
+    <p>transform your business with all the heavy lifting you need.</p>
+    <a class="products-button" href="#our-products">Our Products</a>
+    <div class="image-container">
+      {% if intro_img.image %}
+        <img src="{{ intro_img.image.url }}" alt="Image Description">
+      {% else %}
+        <p>No image available.</p>
+      {% endif %}
+    </div> 
+    <div class="red-line1"></div><br>
+    <h2 class="our-products-heading" id="our-products">------  Our Products  ------</h2>
+    <div class="product-boxes">
+      <div class="product-box">
+        {% if intro_img.image %}
+        <img src="{{ product1_img.image_p1.url }}" alt="Product 1 Image">
+        {% else %}
+          <p>No image available.</p>
+        {% endif %}
+        <h3>Easy-ecom -</h3>
+        <p>An easy, DIY e-commerce web application</p>
+        <a href="#" class="know-more-button">Know More</a>
+      </div>
+      <div class="product-box">
+        {% if intro_img.image %}
+        <img src="{{ product2_img.image_p2.url }}" alt="Product 2 Image">
+        {% else %}
+          <p>No image available.</p>
+        {% endif %}
+        <h3>WebsitEasy</h3>
+        <p>A DIY website builder & Deployer</p>
+        <a href="#" class="know-more-button">Know More</a>
+      </div>
+      <div class="product-box">
+        {% if intro_img.image %}
+        <img src="{{ product3_img.image_p3.url }}" alt="Product 3 Image">
+        {% else %}
+          <p>No image available.</p>
+        {% endif %}
+        <h3>EstiamtEasy</h3>
+        <p>An AI driven Deep Learning SAAS Technology</p>
+        <a href="#" class="know-more-button">Know More</a>
+      </div>
+      <div class="red-line2"></div>
+    <div class="image-below-boxes">
+      {% if intro_img.image %}
+        <img src="{{ Aboutus_img.about_us.url }}" alt="About Us Image">
+        {% else %}
+          <p>No image available.</p>
+        {% endif %}
+    </div>
+    <div class="about-us">
+      <h2>About Us</h2>
+      <p>A Deeply Motivated and Technology Fanatic team, Developing products 
+        with primary focus on Deep Learning, Artificial Intelligence, Machine Learning and 
+        creating products which can solve real time problems across industries, 
+        predominantly working on automating products and bringing in technology value addition 
+        to industries with very little technology exposure.</p>
+    </div>
+    </div>   
+  </div>
+  <div class="red-line3"></div>
+  <div class="company-name" onclick="location.href='/';">{{ companyName }}</div>
+  </script>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="#our-products">Products</a>
+    <a href="/career">Career</a>
+    <a href="/contact">Contact Us</a>
+    <a href="/privacy">Privacy Policy</a>
+    <a href="/terms">Terms &amp; Conditions</a>
+  </div>
+  
+  <div class="email-contact" id="email-section">
+    <img src="{% static 'email logo.png' %}" alt="Email" style="float: left;">
+    <div style="float: left; margin-left: 10px;">
+        <h2>Email</h2>
+        <p><a href="mailto:info@example.com">solution@techfnatic.com</a></p>
+    </div>
+    <div style="clear: both;"></div>
+  </div>
+  <div class="address-contact">
+    <img src="{% static 'location logo.png' %}" alt="Location" style="float: left;">
+    <div style="float: left; margin-left: 10px;">
+        <h2>Address</h2>
+        <p><span>Bengaluru, Karnataka</span></p>
+    </div>
+    <div style="clear: both;"></div>
+  </div>
+
+  <div class="facebook">
+    <a href="{{ Facebook_link }}" target="_blank"><img src="{% static 'facebook logo.png' %}" alt="Facebook"></a>
+  </div>
+  <div class="linkedin">
+    <a href="{{ Linkedin_Link }}" target="_blank"><img src="{% static 'linkedin logo.svg' %}" alt="LinkedIn"></a>
+  </div>
+  <div class="copyrights">
+    <p class="text-center">
+      Copyright 2023 | All rights reserved
+    </p>
+  </div>
+  <!--
+  <div id="map-container"></div>
+  <script src="path/to/map-script.js"></script>
+  -->
+  
+  <div class="red-line"></div>
+</body>
+</html>
